@@ -2,8 +2,11 @@
   "name": "ng-cad-viewer",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^20.3.0",
-    "@angular/core": "^20.3.0"
+    "@angular/common": "^20.1.0",
+    "@angular/core": "^20.1.0",
+    "three": "^0.172.0",
+    "three-viewport-gizmo": "^2.2.0",
+    "primeng": "^20.0.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadViewer } from './ng-cad-viewer';
+import { CadTreeComponent } from './cad-tree.component';
 
-describe('NgCadViewer', () => {
-  let component: NgCadViewer;
-  let fixture: ComponentFixture<NgCadViewer>;
+describe('CadTreeComponent', () => {
+  let component: CadTreeComponent;
+  let fixture: ComponentFixture<CadTreeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgCadViewer],
+      imports: [CadTreeComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NgCadViewer);
+    fixture = TestBed.createComponent(CadTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

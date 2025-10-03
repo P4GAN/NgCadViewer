@@ -6,8 +6,8 @@
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
-    "inlineSources": true,
-    "types": []
+    "types": ["occt-import-js"],
+    "typeRoots": ["node_modules/@types", "src/lib/types"]
   },
   "include": [
     "src/**/*.ts"

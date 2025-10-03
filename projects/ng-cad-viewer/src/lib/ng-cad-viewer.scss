@@ -1,0 +1,27 @@
+.ng-cad-viewer {
+  position: relative;
+  height: 70vh;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.spinner-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.topbar {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}

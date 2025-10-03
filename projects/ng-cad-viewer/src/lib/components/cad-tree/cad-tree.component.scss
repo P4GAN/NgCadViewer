@@ -1,0 +1,17 @@
+.cad-tree {
+  height: calc(100% - 2rem);
+  width: 300px;
+  top: 1rem;
+  left: 1rem;
+  position: absolute;
+  z-index: 100;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: rgba(150, 150, 150, 0.2);
+  pointer-events: auto;
+  overflow: scroll;
+}
+
+p-tree {
+  background-color: rgba(0, 0, 0, 0);
+}

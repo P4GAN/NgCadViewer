@@ -1,0 +1,32 @@
+<div class="ng-cad-viewer">
+  <lib-threejs-viewer [cadNodes]="cadNodes" />
+  <lib-cad-tree [cadNodes]="cadNodes" />
+  <div class="topbar">
+    <p-button
+      icon="pi pi-refresh"
+      (click)="resetView()"
+      pTooltip="Reset View"
+      tooltipPosition="bottom"
+      aria-label="Reset View"
+    />
+    <p-button
+      icon="pi pi-arrow-up-right"
+      (click)="toggleAxes()"
+      pTooltip="Show Axes"
+      tooltipPosition="bottom"
+      aria-label="Show Axes"
+    />
+    <p-button
+      icon="pi pi-table"
+      (click)="toggleGrid()"
+      pTooltip="Show Grid"
+      tooltipPosition="bottom"
+      aria-label="Show Grid"
+    />
+  </div>
+  @if (loading) {
+  <div class="spinner-overlay">
+    <p-progress-spinner aria-label="Loading" />
+  </div>
+  }
+</div>
