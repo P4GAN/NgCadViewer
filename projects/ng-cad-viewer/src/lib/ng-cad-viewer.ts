@@ -14,6 +14,8 @@ import * as plyHelper from './helpers/ply-helper';
 // For some reason angular doesn't like WASM dependencies much, so this only seems to work when
 // imported from the cdn, so we need to add a script tag to all our index.html files and declare the module here
 // <script src="https://cdn.jsdelivr.net/npm/occt-import-js@0.0.22/dist/occt-import-js.min.js"></script>"
+// TODO: Currently the assembly tree doesn't work properly (only goes 1 level deep), so we should either
+// make our own emscripten build of OCCT or use opencascade.js, also we should fix the importing
 declare function occtimportjs(): Promise<OCCT>;
 
 @Component({
@@ -33,6 +35,9 @@ export class NgCadViewer {
   cadNodes: CadNode[] = [];
   loading: boolean = false;
 
+  // Resolves once the OCCT WASM module has been downloaded and initialised
+  private occtReady?: Promise<OCCT>;
+
   @ViewChild(ThreejsViewerComponent)
   threejsViewer!: ThreejsViewerComponent;
 
@@ -44,12 +49,16 @@ export class NgCadViewer {
       this.loading = false;
       return;
     }
-    this.occt = await occtimportjs();
+    this.occtReady = occtimportjs();
+    this.occt = await this.occtReady;
 
     this.loading = false;
   }
 
   async loadCADFiles(files: File[]): Promise<void> {
+    if (!this.occt && this.occtReady) {
+      this.occt = await this.occtReady;
+    }
     if (!this.occt) {
       console.error('OCCT module not loaded yet');
       return;
@@ -82,6 +91,10 @@ export class NgCadViewer {
       }
     }
     this.loading = false;
+  }
+
+  clear(): void {
+    this.cadNodes = [];
   }
 
   resetView(): void {

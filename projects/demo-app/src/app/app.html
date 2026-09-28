@@ -1,8 +1,42 @@
-<div
-  id="drop-zone"
-  (drop)="onFilesDropped($event)"
-  (dragover)="onDragOver($event)">
-  Drag and drop CAD files here
-</div>
+<header class="header">
+  <div class="brand">
+    <h1>NgCadViewer</h1>
+    <p class="description">
+      Drag and drop files onto the viewer, or use <strong>Open files</strong>. 
+      <br>Supported:
+      <code>.step</code> <code>.stp</code> <code>.iges</code> <code>.igs</code> <code>.brep</code>
+      <code>.brp</code> <code>.ply</code>
+    </p>
+  </div>
+  <div class="actions">
+    <p-button label="Open files" icon="pi pi-folder-open" (click)="fileInput.click()" />
+    <p-button label="Load sample" icon="pi pi-box" severity="secondary" (click)="loadSample()" />
+    <p-button label="Clear" icon="pi pi-trash" severity="secondary" [text]="true" (click)="clear()" />
+    <a class="github-link" href="https://github.com/P4GAN/NgCadViewer" target="_blank" rel="noopener">
+      <i class="pi pi-github"></i> GitHub
+    </a>
+  </div>
+  <input
+    #fileInput
+    type="file"
+    multiple
+    hidden
+    [accept]="acceptedExtensions"
+    (change)="onFilesSelected($event)"
+  />
+</header>
 
-<ng-cad-viewer></ng-cad-viewer>
+<main
+  class="viewer"
+  (drop)="onFilesDropped($event)"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+>
+  <ng-cad-viewer />
+  @if (dragging) {
+    <div class="drop-overlay">
+      <i class="pi pi-upload"></i>
+      Drop CAD files to view them
+    </div>
+  }
+</main>

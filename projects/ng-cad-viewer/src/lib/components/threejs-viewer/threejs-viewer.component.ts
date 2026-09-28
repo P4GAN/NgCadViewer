@@ -156,6 +156,7 @@ export class ThreejsViewerComponent {
   }
 
   loadCADNodes(cadNodes: CadNode[]): void {
+    this.objectGroup.clear();
     const selectedMeshes: THREE.Mesh[] = [];
     const processNode = (node: CadNode): void => {
       if (!node.visible) {
@@ -228,6 +229,13 @@ export class ThreejsViewerComponent {
     const sceneBBox: THREE.Box3 = new THREE.Box3().setFromObject(
       this.objectGroup,
     );
+    // Fall back to the default view when nothing is loaded
+    if (sceneBBox.isEmpty()) {
+      sceneBBox.setFromCenterAndSize(
+        new THREE.Vector3(),
+        new THREE.Vector3(100, 0, 100),
+      );
+    }
 
     this.fitToScene(sceneBBox);
   }

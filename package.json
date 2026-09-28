@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run build:lib && ng serve demo-app",
+    "build": "npm run build:lib && npm run build:demo",
+    "build:lib": "ng build NgCadViewer",
+    "build:demo": "ng build demo-app",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "npm run build:lib && ng test --watch=false --browsers=ChromeHeadless"
   },
   "prettier": {
     "printWidth": 100,

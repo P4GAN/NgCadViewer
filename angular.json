@@ -24,6 +24,10 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "projects/ng-cad-viewer/tsconfig.spec.json"
           }
         }
@@ -56,6 +60,7 @@
               }
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
               "projects/demo-app/src/styles.scss"
             ]
           },
@@ -114,6 +119,7 @@
               }
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
               "projects/demo-app/src/styles.scss"
             ]
           }

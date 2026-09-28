@@ -1,20 +1,85 @@
-#drop-zone {
-  width: 80%;
-  max-width: 600px;
-  height: 200px;
-  border: 2px dashed #888;
-  border-radius: 10px;
+:host {
+  display: block;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.header {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.brand {
+  h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.75rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 60ch;
+    color: #555;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 6px;
+
+  &:hover {
+    background: #f1f1f1;
+  }
+}
+
+.viewer {
+  position: relative;
+}
+
+.drop-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: #555;
-  margin: 20px auto;
-  transition: background-color 0.2s, border-color 0.2s;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  color: #1d4ed8;
+  background: rgba(219, 234, 254, 0.85);
+  border: 3px dashed #1d4ed8;
+  pointer-events: none;
+
+  .pi {
+    font-size: 2rem;
+  }
 }
 
-#drop-zone.dragover {
-  background-color: #e0e0e0;
-  border-color: #333;
-}
+.description {
+  margin-top: 0.75rem;
+  color: #666;
 
+  code {
+    margin-left: 0.1rem;
+    padding: 0.2rem 0.3rem;
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+}

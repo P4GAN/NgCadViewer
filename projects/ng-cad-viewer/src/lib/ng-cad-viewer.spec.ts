@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadViewer } from './ng-cad-viewer';
+import { NgCadViewer } from './ng-cad-viewer';
 
 describe('NgCadViewer', () => {
   let component: NgCadViewer;

@@ -13,7 +13,7 @@ declare module 'occt-import-js' {
       position: {
         array: number[];
       };
-      normal: {
+      normal?: {
         array: number[];
       };
     };

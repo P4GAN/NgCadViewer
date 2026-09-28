@@ -8,7 +8,7 @@ export function occtMeshToThreeMesh(mesh: occtImportJS.mesh): {
 } {
   const geometry = new THREE.BufferGeometry();
   const positions = mesh.attributes.position.array;
-  const normals = mesh.attributes.normal.array;
+  const normals = mesh.attributes.normal?.array;
   const indices = mesh.index.array;
 
   const edgePositions: number[] = [];
@@ -76,6 +76,9 @@ export function occtMeshToThreeMesh(mesh: occtImportJS.mesh): {
       color: new THREE.Color('LightGray'),
     });
   }
+  // CAD exports often contain open shells or inconsistently wound faces
+  material.side = THREE.DoubleSide;
+
   const threeMesh = new THREE.Mesh(geometry, material);
   threeMesh.castShadow = true;
   threeMesh.receiveShadow = true;
